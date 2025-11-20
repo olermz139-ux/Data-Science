@@ -1,2 +1,7 @@
-# Project 1
-Choose a data set, read the information into a C++ program, read data into a vector, and perform a calculation on the data.
+# Project 5
+Hash 1000+ objects from data set and experiment to see what size hash table, collision detection method, and key work best for your data.
+* Separate Chaining
+* Quadratic Probing
+* Exponential Probing
+* Double Hashing
+
