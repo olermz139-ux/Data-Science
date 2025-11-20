@@ -1,2 +1,3 @@
-# Project 1
-Choose a data set, read the information into a C++ program, read data into a vector, and perform a calculation on the data.
+# Project 4
+Sort the 1000 objects from the data set. Modify each sorting algorithm to collect data. Analyze the results from the different sorting algorithms and test the stability of each algorithm.
+
