@@ -18,18 +18,19 @@ using std::cout, std::endl, std::ifstream, std::left, std::ostream, std::right, 
 class Turbine {
 private:
     float activePw, windSpeed, theoreticalPw, windDir;
-    string sampleID, date, time;
+    int sampleID;
+    string date, time;
 
 public:
     // Constructors
     Turbine() {
         activePw = windSpeed = theoreticalPw = windDir = -1;
-        sampleID = "None";
+        sampleID = 0;
         date = "Unknown";
         time = "Not available";
     }
 
-    Turbine(string sampleID, string date, string time, float activePw, float windSpeed, float theoreticalPw,
+    Turbine(int sampleID, string date, string time, float activePw, float windSpeed, float theoreticalPw,
             float windDir) {
         this->sampleID = sampleID;
         this->date = date;
@@ -41,7 +42,7 @@ public:
     }
 
     // Getters
-    string getSampleID() const {
+    int getSampleID() const {
         return sampleID;
     }
 
@@ -70,7 +71,7 @@ public:
     }
 
     // Setters
-    void setSampleID(string sampleID) {
+    void setSampleID(int sampleID) {
         this->sampleID = sampleID;
     }
 
@@ -109,6 +110,48 @@ public:
         outs << right << setw(15) << lec.windDir;
         return outs;
     }
+
+    /**
+ * Overload < operator for object comparison
+ */
+    friend bool operator < (const Turbine& lhs, const Turbine& rhs) {
+        return lhs.getSampleID() < rhs.getSampleID();
+    }
+
+    /**
+     * Overload > operator for object comparison
+     */
+    friend bool operator > (const Turbine& lhs, const Turbine& rhs) {
+        return lhs.getSampleID() > rhs.getSampleID();
+    }
+
+    /**
+     * Overload <= operator for object comparison
+     */
+    friend bool operator <= (const Turbine& lhs, const Turbine& rhs) {
+        return lhs.getSampleID() <= rhs.getSampleID();
+    }
+
+    /**
+     * Overload >= operator for object comparison
+     */
+    friend bool operator >= (const Turbine& lhs, const Turbine& rhs) {
+        return lhs.getSampleID() >= rhs.getSampleID();
+    }
+
+    /**
+     * Overload == operator for object comparison
+     */
+    friend bool operator == (const Turbine& lhs, const Turbine& rhs) {
+        return lhs.getSampleID() == rhs.getSampleID();
+    }
+
+    /**
+     * Overload != operator for object comparison
+     */
+    friend bool operator != (const Turbine& lhs, const Turbine& rhs) {
+        return lhs.getSampleID() != rhs.getSampleID();
+    }
 };
     /*
         GLOBAL FUNCTION
@@ -123,13 +166,15 @@ public:
             getline(fileIn, header);
 
             //Variables to be read
-            string sampleID = "S0", date = "January-1", time = "0:00";
+            int sampleID = 0;
+            string date = "January-1", time = "0:00";
             float activePw = 0, windSpeed = 0, theoreticalPw = 0, windDir = 0;
             char comma;
 
             while(fileIn) {
                 //Read sample ID
-                getline(fileIn, sampleID, ',');
+                fileIn >> sampleID;
+                fileIn >> comma;
                 //Read date
                 getline(fileIn, date, ',');
                 //Read time
