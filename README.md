@@ -1,2 +1,2 @@
-# Project 1
-Choose a data set, read the information into a C++ program, read data into a vector, and perform a calculation on the data.
+# Project 2
+C++ program that uses Stack and Queue data structures to store objects of varying data types.
